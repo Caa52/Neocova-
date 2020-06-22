@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+<!--calls the layout file-->
+{% block content %}
+    {% for post in posts %}
+        <h1>{{ post.title }}</h1>
+        <!--we are calling variable name, not actual instructions-->
+        <p>By {{ post.author }} on {{ post.date_posted }}</p>
+        <p>{{ post.content }}</p>
+    {% endfor %}
+    <!--tells us when for loop ends-->
+{% endblock content%}
+<!--using & closing content block to avoid repeated code-->

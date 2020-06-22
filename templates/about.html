@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>About Page</h1>
+{% endblock content%}
+<!--using & closing content block to avoid repeated code-->
+
+<!--REPLACES ALL OF THIS:
+<!DOCTYPE html>
+<html>
+<head>
+{% if title %}
+    <title> Flask Blog - {{ title }}</title>
+    sees it does have a title and uses it instead
+{% else %}
+    <title>Flask Blog</title>
+{% endif %}</head>  
+<body>
+    <h1>About Page</h1>
+</body>
+</html> -->
