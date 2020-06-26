@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    {% if title %}
+        <title>Team4 Blog - {{ title }}</title>
+    {% else %}
+        <title>Team4 Blog</title>
+    {% endif %}
+</head>
+<body>
+    <header>
+      <nav>
+        <div>
+          <a href="/">Team4 Blog</a>
+          <div>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('about') }}">Support</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}">Register</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div>
+        <div>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div>
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+    </main>
+
+</body>
+</html>

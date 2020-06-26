@@ -1,2 +1,0 @@
-# Neocova-
-UI team 

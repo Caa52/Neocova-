@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Home page{% endblock %}
+{% block content %}
+
+<h2>Bank Evaluation Forecasting</h2>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="Asset" placeholder="Asset" required="required" />
+      <input type="text" name="Current Ratio" placeholder="Current Ratio" required="required" />
+      <input type="text" name="Debt Ratio" placeholder="Debt Ratio" required="required" />
+<!--       <input type="text" name="ROA" placeholder="ROA" required="required" />
+      <input type="text" name="Total Asset Turnover" placeholder="Total Asset Turnover" required="required" />
+      <input type="text" name="Net Interest to Total Renenue" placeholder="Net Interest to Total Renenue" required="required" />
+ -->
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Predict bank evaluation</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+
+{% endblock %}

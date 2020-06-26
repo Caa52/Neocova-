@@ -1,0 +1,32 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+<!--  <div class="image">
+  <image scr="{{ url_for('static',filename='logo.jpg') }}", width="300" height="142">
+ </div> -->
+
+ <div class="login">
+	<h3>Bank Evaluation Forecasting</h3>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('result')}}"method="post">
+    	<input type="text" name="Asset" placeholder="Asset" required="required" />
+      <input type="text" name="Current Ratio" placeholder="Current Ratio" required="required" />
+		  <input type="text" name="Debt Ratio" placeholder="Debt Ratio" required="required" />
+      <br>
+      <br>
+<!--       <input type="text" name="ROA" placeholder="ROA" required="required" />
+      <input type="text" name="Total Asset Turnover" placeholder="Total Asset Turnover" required="required" />
+      <input type="text" name="Net Interest to Total Renenue" placeholder="Net Interest to Total Renenue" required="required" />
+ -->
+        <button type="submit" class="btn btn-primary">Predict bank evaluation</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+{% endblock content %}
