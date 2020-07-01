@@ -14,9 +14,8 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
 
-    int_features = [int(x) for x in request.form.values()]
-    final_features = [int_features]
-
+    final_features = [int(x) for x in request.form.values()]
+    
     scoring_uri = 'http://43aa851b-4045-482b-9016-9f97cc6b3e70.westus2.azurecontainer.io/score'
  
     data = {"data": final_features}
@@ -24,10 +23,9 @@ def predict():
     input_data = json.dumps(data)
     headers= {'Content-Type': 'application/json'}
     resp = requests.post(scoring_uri, input_data, headers=headers)
-    prediction = "the value should be" + resp.text
-
-
-    return render_template('index.html', prediction_text=prediction)
+    output  = json.loads(resp.text)
+ 
+    return render_template('index.html', prediction_text= 'Your bank valuation is estimated as $ {}'.format(output['predict'][0]))
 
 
 
