@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}View All Users{% endblock %}
+{% block content %}
+	{% for item in values %}
+		<p>input1: {{item.input1}}, input2: {{item.input2}}, input3: {{item.input3}}, output: {{item.output}}, time: {{item.time}}, user_id : {{item. user_id }}</p>
+	{% endfor %}
+{% endblock  %}
