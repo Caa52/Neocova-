@@ -1,10 +1,11 @@
 from flask import render_template, url_for, flash, redirect, request
 from app import app, db, bcrypt
 from app.forms import RegistrationForm, LoginForm
-from app.models import User, Post
+from app.models import User, Post, History
 from flask_login import login_user, current_user, logout_user, login_required
 import pickle
 import numpy as np
+from datetime import datetime
 
 posts = [
     {
@@ -25,6 +26,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 
 
 @app.route("/")
+
 @app.route("/home")
 def home():
     return render_template('home.html', posts=posts)
@@ -78,8 +80,24 @@ def account():
     return render_template('account.html', title='Account')
 
 
-@app.route('/predict')
+@app.route('/predict', methods=['GET', 'POST'])
 def predict():
+
+    # int_features = [int(x) for x in request.form.values()]
+    # final_features = [np.array(int_features)]
+    # prediction = model.predict(final_features)
+
+    # history = History(input1 = int_features[0],
+    #     input2 = int_features[1],
+    #     input3 = int_features[2],
+    #     time = datetime.now())
+
+    # found_user = User.query.filter_by(username=current_user.username).first()
+    # found_user.history.append(history)
+    # # db.create_all()
+    # db.session.add(history)
+    # db.session.commit()
+
     return render_template('predict.html')
 
 
@@ -92,6 +110,25 @@ def result():
 
     output = round(prediction[0], 2)
 
-    return render_template('predict.html', prediction_text='Your bank evaluation is estimated as $ {}'.format(output))
+    history = History(input1 = int_features[0],
+        input2 = int_features[1],
+        input3 = int_features[2],
+        output = output,
+        time = datetime.now())
+
+    found_user = User.query.filter_by(username=current_user.username).first()
+    found_user.history.append(history)
+    # db.create_all()
+    db.session.add(found_user)
+    db.session.add(history)
+    db.session.commit()
+
+    return render_template('predict.html', prediction_text='Your bank valuation is estimated as $ {}'.format(output))
+
+@app.route("/view")
+def view():
+    return render_template("view.html", values=History.query.all())
+
+
 
 
