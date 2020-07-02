@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Home page{% endblock %}
+{% block base_content %}
+
+
+    <h1>500 An unexpected error has occurred</h1>
+    <p>The server encountered an internal error or misconfiguration and was unable to complete your request. 
+
+    <p>Please contact the server administrator, webmaster and inform them the error.</p>
+
+    <p>Sorry for the inconvenience!</p>
+
+    <h5>Action that may caused the error</h5>
+
+    <p>1. Invalid Data Type error： Numerical Data required instead of Character</p>
+    <p>2. TBC...</p>
+    <p>3. TBC...</p>
+    <p>You can <a class="ml-2" href="{{ url_for('predict') }}">Go back</a> and try again<p>
+{% endblock %}
