@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}View All Users{% endblock %}
+{% block content %}
+<!-- 	{% for item in values %}
+		<p>input1: {{item.input1}}, input2: {{item.input2}}, input3: {{item.input3}}, output: {{item.output}}, time: {{item.time}}, user_id : {{item. user_id }}</p>
+	{% endfor %} -->
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">input1</th>
+      <th scope="col">input2</th>
+      <th scope="col">input3</th>
+      <th scope="col">output</th>
+      <th scope="col">time</th>
+      <th scope="col">user_id</th>
+    </tr>
+  </thead>
+  <tbody>
+	{% set i = namespace(value=0) %}
+	{% for item in values %}
+	{% set i.value = i.value + 1 %}
+    <tr>
+      <th scope="row">{{i.value}}</th>
+      <td>{{item.input1}}</td>
+      <td>{{item.input2}}</td>
+      <td>{{item.input3}}</td>
+      <td>{{item.output}}</td>
+      <td>{{item.time}}</td>
+      <td>{{item.user_id}}</td>
+    </tr>
+	{% endfor %}
+
+
+  </tbody>
+</table>
+
+
+
+{% endblock  %}

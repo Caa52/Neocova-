@@ -1,0 +1,293 @@
+<!-- This templete is for page with drop down bar -->
+{% extends "base.html" %}
+{% block title %}Home page{% endblock %}
+{% block base_content %}
+    <div class="content-section">
+        <form action="{{ url_for('predict')}}"method="post">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Bank Valuation Forecasting</legend>
+                 
+                <div class="form-group">
+                    {{ form.eqtot.label(class="form-control-label") }}
+
+                    {% if form.eqtot.errors %}
+                        {{ form.eqtot(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.eqtot.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.eqtot(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.eq.label(class="form-control-label") }}
+                    {% if form.eq.errors %}
+                        {{ form.eq(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.eq.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.eq(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.IDP3REDM.label(class="form-control-label") }}
+                    {% if form.IDP3REDM.errors %}
+                        {{ form.IDP3REDM(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.IDP3REDM.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.IDP3REDM(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.IDNAREDM.label(class="form-control-label") }}
+                    {% if form.IDNAREDM.errors %}
+                        {{ form.IDNAREDM(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.IDNAREDM.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.IDNAREDM(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.RBCT1J.label(class="form-control-label") }}
+                    {% if form.RBCT1J.errors %}
+                        {{ form.RBCT1J(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.RBCT1J.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.RBCT1J(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+                <div class="form-group">
+                    {{ form.liabeq.label(class="form-control-label") }}
+                    {% if form.liabeq.errors %}
+                        {{ form.liabeq(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.liabeq.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.liabeq(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+        
+                <div class="form-group">
+                    {{ form.Lnrenr2N.label(class="form-control-label") }}
+                    {% if form.Lnrenr2N.errors %}
+                        {{ form.Lnrenr2N(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.Lnrenr2N.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.Lnrenr2N(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+          
+                <div class="form-group">
+                    {{ form.crcon.label(class="form-control-label") }}
+                    {% if form.crcon.errors %}
+                        {{ form.crconM(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.crcon.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.crcon(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+           
+                <div class="form-group">
+                    {{ form.crci.label(class="form-control-label") }}
+                    {% if form.crci.errors %}
+                        {{ form.crci(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.crci.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.crci(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+     
+                <div class="form-group">
+                    {{ form.Lnag1.label(class="form-control-label") }}
+                    {% if form.Lnag1.errors %}
+                        {{ form.Lnag1(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.Lnag1.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.Lnag1(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+             
+                <div class="form-group">
+                    {{ form.intexpy.label(class="form-control-label") }}
+                    {% if form.intexpy.errors %}
+                        {{ form.intexpy(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.intexpy.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.intexpy(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+          
+                <div class="form-group">
+                    {{ form.esal.label(class="form-control-label") }}
+                    {% if form.esal.errors %}
+                        {{ form.esal(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.esal.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.esal(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+        
+                <div class="form-group">
+                    {{ form.eeffr.label(class="form-control-label") }}
+                    {% if form.eeffr.errors %}
+                        {{ form.eeffr(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.eeffr.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.eeffr(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+           
+                <div class="form-group">
+                    {{ form.depdastr.label(class="form-control-label") }}
+                    {% if form.depdastr.errors %}
+                        {{ form.depdastr(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.depdastr.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.depdastr(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+     
+                <div class="form-group">
+                    {{ form.NTRTMMED.label(class="form-control-label") }}
+                    {% if form.NTRTMMED.errors %}
+                        {{ form.NTRTMMED(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.NTRTMMED.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.NTRTMMED(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+        
+                <div class="form-group">
+                    {{ form.elnatry.label(class="form-control-label") }}
+                    {% if form.elnatry.errors %}
+                        {{ form.elnatry(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.elnatry.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.elnatry(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+             
+                <div class="form-group">
+                    {{ form.nare.label(class="form-control-label") }}
+                    {% if form.nare.errors %}
+                        {{ form.nare(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.nare.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.nare(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+         
+                <div class="form-group">
+                    {{ form.p3re.label(class="form-control-label") }}
+                    {% if form.p3re.errors %}
+                        {{ form.p3re(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.p3re.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.p3re(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+
+        
+            </fieldset>
+            <div class="form-group">
+                {{ form.Predict(class="btn btn-outline-info") }}
+            </div>
+
+            {{ prediction_text }}
+            <br>
+            <br>
+        </form>
+    </div>
+
+
+
+
+{% endblock%}
+
