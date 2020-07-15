@@ -2,6 +2,6 @@
 {% block title %}View All Users{% endblock %}
 {% block content %}
 	{% for item in values %}
-		<p>id: {{item.id}}, username: {{item.username}}, email: {{item.email}}</p>
+		<p>id: {{item.id}}, username: {{item.username}}, email: {{item.email}},city: {{item.City}}, state: {{item.State}}, Zip: {{item.Zip}}, company: {{item.Company}}, department: {{item.Department}}, title: {{item.Title}} </p>
 	{% endfor %}
 {% endblock  %}

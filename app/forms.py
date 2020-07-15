@@ -9,6 +9,19 @@ class RegistrationForm(FlaskForm):
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
+    City = StringField('City',
+                        validators=[DataRequired(),Length(min=2, max=20)])
+    State = StringField('State',
+                        validators=[DataRequired(),Length(min=2, max=20)])
+    Zip = StringField('Zip',
+                        validators=[DataRequired(),Length(min=5, max=5)])
+    Company = StringField('Company',
+                        validators=[DataRequired(),Length(min=4, max=100)])
+    Department = StringField('Department',
+                        validators=[DataRequired(),Length(min=4, max=100)])
+    Title = StringField('Title',
+                        validators=[DataRequired(),Length(min=4, max=100)])
+
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])
@@ -47,7 +60,7 @@ class PredictForm(FlaskForm):
     Lnag1 = FloatField('$ amt. loans to finance agricultural prod. - orig. amts. of $100K or less',validators=[DataRequired(message=u"Please input integer number"), NumberRange(min=0, max=100000, message="Number is requred")])
     intexpy = FloatField('Cost of funding earning assets',validators=[DataRequired(message=u"Please input integer number"), NumberRange(min=0, max=100000, message="Number is requred")])
     esal= FloatField('Salaries and employee benefits',validators=[DataRequired(message=u"Please input integer number"), NumberRange(min=0, max=100000, message="Number is requred")])
-    eeffr = FloatField('Efficiency ratio',validators=[DataRequired(message=u"Please input integer number"), NumberRange(min=0, max=100000, message="Number is requred")])
+    eeffr = FloatField('Efficiency ratio',validators=[DataRequired(message=u"Please input integer number"), NumberRange(min=0, max=1, message="Number should be larger than 0 and least than 1")])
     depdastr = FloatField('Total domestic deposits to total assets',validators=[DataRequired(message=u"Please input integer number"), NumberRange(min=0, max=100000, message="Number is requred")])
     NTRTMMED = FloatField('Amount ($) - time deposits $100,000 to $250,000',validators=[DataRequired(message=u"Please input integer number"), NumberRange(min=0, max=100000, message="Number is requred")])
     elnatry = FloatField('Loan and lease loss provision to assets',validators=[DataRequired(message=u"Please input integer number"), NumberRange(min=0, max=100000, message="Number is requred")])
