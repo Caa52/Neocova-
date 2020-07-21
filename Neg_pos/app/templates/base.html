@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<head>
+  <meta charset="UTF-8">
+  <title>Side Navigation Bar</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+	<script src="https://kit.fontawesome.com/ecf24da0b4.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+  
+    <div class="sidebar">
+        <!-- <img src="/Users/mosiqi/Neocova-/LoginPage+model+menu/static/logo.png" style="width:200 px;height:80px;"> -->
+        <img src="{{ url_for('static', filename='logo.png') }}" style="width:200 px;height:80px;">
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="#"><i class="fas fa-user"></i>My profile</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i>Help</a></li>
+            <li><a href="#"><i class="nav-item nav-link" href="{{ url_for('predict') }}">Prediction Tool</a><li>
+        </ul> 
+        <div class="social_media">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    
+
+        <div class="container-fluid">
+            {% block base_content %}
+            {% endblock  %}
+        </div>
+  
+
+
+
+</div>
+
+</body>
+{% endblock content %}

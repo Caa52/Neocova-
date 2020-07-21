@@ -1,0 +1,114 @@
+<!-- This templete is for page with drop down bar -->
+{% extends "base.html" %}
+{% block title %}Home page{% endblock %}
+{% block base_content %}
+    <div class="content-section">
+        <form action="{{ url_for('result')}}"method="post">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Bank Valuation Forecasting</legend>
+                <div class="form-row">
+                    <div class="form-group">
+                        {{ form.eqtot.label(class="form-control-label") }}
+
+                        {% if form.eqtot.errors %}
+                            {{ form.eqtot(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.eqtot.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.eqtot(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    {{ form.eq.label(class="form-control-label") }}
+                    {% if form.eq.errors %}
+                        {{ form.eq(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.eq.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.eq(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.IDP3REDM.label(class="form-control-label") }}
+                    {% if form.IDP3REDM.errors %}
+                        {{ form.IDP3REDM(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.IDP3REDM.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.IDP3REDM(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.IDNAREDM.label(class="form-control-label") }}
+                    {% if form.IDNAREDM.errors %}
+                        {{ form.IDNAREDM(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.IDNAREDM.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.IDNAREDM(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.States.label(class="form-control-label") }}
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Alaska</option>
+                        <option>Alabama</option>
+                        <option>Arkansas</option>
+                        <option>American Samoa</option>
+                        <option>Arizona</option>
+                        <option>California</option>
+                        <option>Colorado</option>
+                        <option>Connecticut</option>
+                        <option>District of Columbia</option>
+                        <option>Delaware</option>
+                        <option>Florida</option>
+                        <option>Georgia</option>
+                        <option>Guam</option>
+                        <option>Hawaii</option>
+                        <option>Iowa</option>
+                        <option>Idaho</option>
+                        <option>Illinois</option>
+                        <option>Kansas</option>
+                        <option>Indiana</option>
+                        <option>Kentucky</option>
+                        <option>Louisiana</option>
+                        <option>Massachusetts</option>
+                        <option>Maryland</option>
+                        <option>Massachusetts</option>
+                        <option>Maine</option>
+                        <option>Michigan</option>
+                        <option>Minnesota</option>
+                        <option>Missouri</option>
+                        <option>Mississippi</option>
+                        <option>Montana</option>
+                        <option>North Carolina</option>
+                        <!-- "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming" -->
+                    </select>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.Predict(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+
+   {{ prediction_text }}
+
+
+{% endblock%}
