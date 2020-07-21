@@ -91,28 +91,20 @@ def account():
 def predict():
     form = PredictForm()
     if form.validate_on_submit():
-        final_features = np.zeros(18)
-        final_features[0] = form.eqtot.data
-        final_features[1] = form.eq.data
-        final_features[2] = form.IDP3REDM.data
-        final_features[3] = form.IDNAREDM.data
-        final_features[4] = form.RBCT1J.data
-        final_features[5] = form.liabeq.data
-        final_features[6] = form.Lnrenr2N.data
-        final_features[7] = form.crcon.data
-        final_features[8] = form.crci.data
-        final_features[9] = form.Lnag1.data
-        final_features[10] = form.intexpy.data
-        final_features[11] = form.esal.data
-        final_features[12] = form.eeffr.data
-        final_features[13] = form.depdastr.data
-        final_features[14] = form.NTRTMMED.data
-        final_features[15] = form.elnatry.data
-        final_features[16] = form.nare.data
-        final_features[17] = form.p3re.data
+        final_features = np.zeros(10)
+        final_features[0] = form.roeinjr.data
+        final_features[1] = form.noijy.data
+        final_features[2] = form.asset.data
+        final_features[3] = form.RBCT1J.data
+        final_features[4] = form.core_deposit.data
+        final_features[5] = form.lnlsntv.data
+        final_features[6] = form.County_GDP_Percent.data
+        final_features[7] = form.PC_Labor_Force.data
+        final_features[8] = form.PC_Unemployed.data
+        final_features[9] = form.GR_Total_Population.data
         final_features = [final_features.tolist()]
         
-        scoring_uri = 'http://b4f7f8bc-8a7f-42fc-8759-b17db8bb8b22.westus2.azurecontainer.io/score'
+        scoring_uri = 'http://5e56fe7c-6b6f-47ff-bdfb-fac9b4b8c334.westus2.azurecontainer.io/score'
      
         data = {"data": final_features}
         input_data = json.dumps(data)
