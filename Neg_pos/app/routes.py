@@ -91,7 +91,30 @@ def account():
 def predict():
     form = PredictForm()
     if form.validate_on_submit():
-        final_features = np.zeros(10)
+        Var_features = ['roeinjr','noijy','asset','RBCT1J','core_deposit','lnlsntv','County_GDP_Percent','PC_Labor_Force','PC_Unemployed','GR_Total_Population']
+        s_Var_features = ['s_roeinjr','s_noijy','s_asset','s_RBCT1J','s_core_deposit','s_lnlsntv','s_County_GDP_Percent','s_PC_Labor_Force','s_PC_Unemployed','s_GR_Total_Population']
+        
+        s_final_features = [None] * len(s_Var_features)
+        final_features = np.zeros(len(Var_features))
+        
+        # for i in range(0,len(Var_features)):
+        #     s_final_features[i] = form.s_Var_features[i].data 
+
+       
+        # for i in range(0,len(Var_features)):
+        #     final_features[i] = form.Var_features[i].data
+
+        s_final_features[0] = form.s_roeinjr.data
+        s_final_features[1] = form.s_noijy.data
+        s_final_features[2] = form.s_asset.data
+        s_final_features[3] = form.s_RBCT1J.data
+        s_final_features[4] = form.s_core_deposit.data
+        s_final_features[5] = form.s_lnlsntv.data
+        s_final_features[6] = form.s_County_GDP_Percent.data
+        s_final_features[7] = form.s_PC_Labor_Force.data
+        s_final_features[8] = form.s_PC_Unemployed.data
+        s_final_features[9] = form.s_GR_Total_Population.data
+
         final_features[0] = form.roeinjr.data
         final_features[1] = form.noijy.data
         final_features[2] = form.asset.data
@@ -102,11 +125,15 @@ def predict():
         final_features[7] = form.PC_Labor_Force.data
         final_features[8] = form.PC_Unemployed.data
         final_features[9] = form.GR_Total_Population.data
-        final_features[10] = form.market_cap_5.data
+
+        for i in range(0,len(s_final_features)):
+            if s_final_features[i] == "-":
+                final_features[i] = final_features[i]*(-1)
+        
         
         final_features = [final_features.tolist()]
         
-        scoring_uri = 'http://62654621-15be-4bb4-8c0f-0aa046e880a4.westus2.azurecontainer.io/score'
+        scoring_uri = 'http://5e56fe7c-6b6f-47ff-bdfb-fac9b4b8c334.westus2.azurecontainer.io/score'
      
         data = {"data": final_features}
         input_data = json.dumps(data)
@@ -117,9 +144,17 @@ def predict():
         # output  = resp.text
         output = output[0][0]
 
-        history = History(input1 = final_features[0][0],
-            input2 = final_features[0][1],
-            input3 = final_features[0][2],
+        history = History(roeinjr = final_features[0][0],
+            noijy = final_features[0][1],
+            asset = final_features[0][2],
+            RBCT1J= final_features[0][3],
+            core_deposit= final_features[0][4],
+            lnlsntv= final_features[0][5],
+            County_GDP_Percent= final_features[0][6],
+            PC_Labor_Force= final_features[0][7],
+            PC_Unemployed = final_features[0][8],
+            GR_Total_Population = final_features[0][9],
+
             output = output,
             time = datetime.now())
 

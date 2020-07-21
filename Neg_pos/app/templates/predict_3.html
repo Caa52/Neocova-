@@ -202,25 +202,7 @@
                     {% endif %}
                 </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Increase or Decrease</label>
-                        {{ form.s_market_cap_5(class="form-control form-control-lg") }}
-                    </div>
-                <div class="form-group col-md-4 mb-3">
-                    {{ form.market_cap_5.label(class="form-control-label") }}
-                    {% if form.market_cap_5.errors %}
-                        {{ form.market_cap_5(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.market_cap_5.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.market_cap_5(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-                </div>
+
                
              </fieldset>
             <div class="form-group">
