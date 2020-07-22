@@ -47,9 +47,18 @@ class History(db.Model):
     __tablename__ = 'history'
     id = db.Column(db.Integer, primary_key=True)
     # user = db.Column(db.String(20), nullable=False)
-    input1 = db.Column(db.String(20), nullable=False)
-    input2 = db.Column(db.String(20), nullable=False)
-    input3 = db.Column(db.String(20), nullable=False)
+    roeinjr = db.Column(db.String(20), nullable=False)
+    noijy = db.Column(db.String(20), nullable=False)
+    asset = db.Column(db.String(20), nullable=False)
+    RBCT1J = db.Column(db.String(20), nullable=False)
+    core_deposit = db.Column(db.String(20), nullable=False)
+    lnlsntv = db.Column(db.String(20), nullable=False)
+    County_GDP_Percent = db.Column(db.String(20), nullable=False)
+    PC_Labor_Force = db.Column(db.String(20), nullable=False)
+    PC_Unemployed = db.Column(db.String(20), nullable=False)
+    GR_Total_Population = db.Column(db.String(20), nullable=False)
+
+
     output = db.Column(db.String(20), nullable=False)
     time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -57,7 +66,7 @@ class History(db.Model):
 
 # What is this __repr__ for?? For retrieval???
     def __repr__(self):
-        return f"History('{self.username}','{self.input1}','{self.input2}','{self.input3}','{self.output}','{self.time}')"
+        return f"History('{self.username}','{self.roeinjr}','{self.noijy}','{self.asset}','{self.RBCT1J}','{self.core_deposit}','{self.lnlsntv}','{self.County_GDP_Percent}','{self.PC_Labor_Force}','{self.PC_Unemployed}','{self.GR_Total_Population}','{self.output}','{self.time}')"
 
 
 

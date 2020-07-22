@@ -2,6 +2,10 @@
 {% extends "base.html" %}
 {% block title %}Home page{% endblock %}
 {% block base_content %}
+
+<link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
     <div class="content-section">
         <form action="{{ url_for('predict')}}"method="post">
             {{ form.hidden_tag() }}
@@ -9,201 +13,340 @@
                 <legend class="border-bottom mb-4">Bank Valuation Forecasting</legend>
 
                 <div class="form-row">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Increase or Decrease</label>
-                        {{ form.s_roeinjr(class="form-control form-control-lg") }}
-                        
-                    </div>
-                    <div class="form-group col-md-4 mb-3">
-                        {{ form.roeinjr.label(class="form-control-label") }}
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="exampleFormControlSelect2">+ / -</label>
+                                {{ form.s_roeinjr(class="form-control form-control-lg") }}                   
+                            </div>
+                            <div class="form-group col-md-7">
+                                {{ form.roeinjr.label(class="form-control-label") }}
 
-                        {% if form.roeinjr.errors %}
-                            {{ form.roeinjr(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.roeinjr.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
+                                {% if form.roeinjr.errors %}
+                                    {{ form.roeinjr(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.roeinjr.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.roeinjr(class="form-control form-control-lg") }}
+                                {% endif %}
                             </div>
-                        {% else %}
-                            {{ form.roeinjr(class="form-control form-control-lg") }}
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Increase or Decrease</label>
-                        {{ form.s_noijy(class="form-control form-control-lg") }}
-                    </div>
-                    <div class="form-group col-md-4 mb-3">
-                        {{ form.noijy.label(class="form-control-label") }}
-                        {% if form.noijy.errors %}
-                            {{ form.noijy(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.noijy.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
+
+
+                            <div class="form-group col-md-3">
+                                <div class="info">
+                                  <i class="icon-info-sign"></i>
+
+                                  <span class="extra-info">
+                                    A little column extra info. Aaand just a little bit more
+                                  </span>
+                                </div>
                             </div>
-                        {% else %}
-                            {{ form.noijy(class="form-control form-control-lg") }}
-                        {% endif %}
+
+                       
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="exampleFormControlSelect2">+ / -</label>
+                                {{ form.s_noijy(class="form-control form-control-lg") }}                   
+                            </div>
+                            <div class="form-group col-md-7">
+                                {{ form.noijy.label(class="form-control-label") }}
+
+                                {% if form.noijy.errors %}
+                                    {{ form.noijy(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.noijy.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.noijy(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <div class="info">
+                                  <i class="icon-info-sign"></i>
+
+                                  <span class="extra-info">
+                                    A little column extra info. Aaand just a little bit more
+                                  </span>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Increase or Decrease</label>
-                        {{ form.s_asset(class="form-control form-control-lg") }}
-                    </div>
-                    <div class="form-group col-md-4 mb-3">
-                        {{ form.asset.label(class="form-control-label") }}
-                        {% if form.asset.errors %}
-                            {{ form.asset(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.asset.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="exampleFormControlSelect2">+ / -</label>
+                                {{ form.s_asset(class="form-control form-control-lg") }}                   
                             </div>
-                        {% else %}
-                            {{ form.asset(class="form-control form-control-lg") }}
-                        {% endif %}
+                            <div class="form-group col-md-7">
+                                {{ form.asset.label(class="form-control-label") }}
+
+                                {% if form.asset.errors %}
+                                    {{ form.asset(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.roeinjr.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.asset(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group col-md-3">
+                                <div class="info">
+                                  <i class="icon-info-sign"></i>
+
+                                  <span class="extra-info">
+                                    A little column extra info. Aaand just a little bit more
+                                  </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="exampleFormControlSelect2">+ / -</label>
+                                {{ form.s_RBCT1J(class="form-control form-control-lg") }}                   
+                            </div>
+                            <div class="form-group col-md-7">
+                                {{ form.RBCT1J.label(class="form-control-label") }}
+
+                                {% if form.RBCT1J.errors %}
+                                    {{ form.RBCT1J(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.RBCT1J.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.RBCT1J(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                             <div class="form-group col-md-3">
+                                <div class="info">
+                                  <i class="icon-info-sign"></i>
+
+                                  <span class="extra-info">
+                                    A little column extra info. Aaand just a little bit more
+                                  </span>
+                                </div>
+                            </div>                           
+                        </div>
                     </div>
                 </div>
+
                 <div class="form-row">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Increase or Decrease</label>
-                        {{ form.s_RBCT1J(class="form-control form-control-lg") }}
-                    </div>
-                    <div class="form-group col-md-4 mb-3">
-                        {{ form.RBCT1J.label(class="form-control-label") }}
-                        {% if form.RBCT1J.errors %}
-                            {{ form.RBCT1J(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.RBCT1J.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="exampleFormControlSelect2">+ / -</label>
+                                {{ form.s_core_deposit(class="form-control form-control-lg") }}                   
                             </div>
-                        {% else %}
-                            {{ form.RBCT1J(class="form-control form-control-lg") }}
-                        {% endif %}
+                            <div class="form-group col-md-7">
+                                {{ form.core_deposit.label(class="form-control-label") }}
+
+                                {% if form.core_deposit.errors %}
+                                    {{ form.core_deposit(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.core_deposit.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.core_deposit(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                                <div class="form-group col-md-3">
+                                <div class="info">
+                                  <i class="icon-info-sign"></i>
+
+                                  <span class="extra-info">
+                                    A little column extra info. Aaand just a little bit more
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="exampleFormControlSelect2">+ / -</label>
+                                {{ form.s_lnlsntv(class="form-control form-control-lg") }}                   
+                            </div>
+                            <div class="form-group col-md-7">
+                                {{ form.lnlsntv.label(class="form-control-label") }}
+
+                                {% if form.lnlsntv.errors %}
+                                    {{ form.lnlsntv(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.lnlsntv.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.lnlsntv(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                             <div class="form-group col-md-3">
+                                <div class="info">
+                                  <i class="icon-info-sign"></i>
+
+                                  <span class="extra-info">
+                                    A little column extra info. Aaand just a little bit more
+                                  </span>
+                                </div>
+                            </div>                           
+                        </div>
                     </div>
                 </div>
+
                 <div class="form-row">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Increase or Decrease</label>
-                        {{ form.s_core_deposit(class="form-control form-control-lg") }}
-                    </div>
-                    <div class="form-group col-md-4 mb-3">
-                        {{ form.core_deposit.label(class="form-control-label") }}
-                        {% if form.core_deposit.errors %}
-                            {{ form.core_deposit(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.core_deposit.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="exampleFormControlSelect2">+ / -</label>
+                                {{ form.s_County_GDP_Percent(class="form-control form-control-lg") }}                   
                             </div>
-                        {% else %}
-                            {{ form.core_deposit(class="form-control form-control-lg") }}
-                        {% endif %}
+                            <div class="form-group col-md-7">
+                                {{ form.County_GDP_Percent.label(class="form-control-label") }}
+
+                                {% if form.County_GDP_Percent.errors %}
+                                    {{ form.County_GDP_Percent(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.County_GDP_Percent.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.County_GDP_Percent(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                             <div class="form-group col-md-3">
+                                <div class="info">
+                                  <i class="icon-info-sign"></i>
+
+                                  <span class="extra-info">
+                                    A little column extra info. Aaand just a little bit more
+                                  </span>
+                                </div>
+                            </div>                           
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="exampleFormControlSelect2">+ / -</label>
+                                {{ form.s_PC_Labor_Force(class="form-control form-control-lg") }}                   
+                            </div>
+                            <div class="form-group col-md-7">
+                                {{ form.PC_Labor_Force.label(class="form-control-label") }}
+
+                                {% if form.PC_Labor_Force.errors %}
+                                    {{ form.PC_Labor_Force(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.PC_Labor_Force.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.PC_Labor_Force(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group col-md-3">
+                                <div class="info">
+                                  <i class="icon-info-sign"></i>
+
+                                  <span class="extra-info">
+                                    A little column extra info. Aaand just a little bit more
+                                  </span>
+                                </div>
+                            </div>                            
+                        </div>
                     </div>
                 </div>
+
                 <div class="form-row">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Increase or Decrease</label>
-                        {{ form.s_lnlsntv(class="form-control form-control-lg") }}
-                    </div>
-                    <div class="form-group col-md-4 mb-3">
-                        {{ form.lnlsntv.label(class="form-control-label") }}
-                        {% if form.lnlsntv.errors %}
-                            {{ form.lnlsntv(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.lnlsntv.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="exampleFormControlSelect2">+ / -</label>
+                                {{ form.s_PC_Unemployed(class="form-control form-control-lg") }}                   
                             </div>
-                        {% else %}
-                            {{ form.lnlsntv(class="form-control form-control-lg") }}
-                        {% endif %}
+                            <div class="form-group col-md-7">
+                                {{ form.PC_Unemployed.label(class="form-control-label") }}
+
+                                {% if form.PC_Unemployed.errors %}
+                                    {{ form.PC_Unemployed(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.PC_Unemployed.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.PC_Unemployed(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group col-md-3">
+                                <div class="info">
+                                  <i class="icon-info-sign"></i>
+
+                                  <span class="extra-info">
+                                    A little column extra info. Aaand just a little bit more
+                                  </span>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="exampleFormControlSelect2">+ / -</label>
+                                {{ form.s_GR_Total_Population(class="form-control form-control-lg") }}                   
+                            </div>
+                            <div class="form-group col-md-7">
+                                {{ form.GR_Total_Population.label(class="form-control-label") }}
+
+                                {% if form.GR_Total_Population.errors %}
+                                    {{ form.GR_Total_Population(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.GR_Total_Population.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.GR_Total_Population(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group col-md-3">
+                                <div class="info">
+                                  <i class="icon-info-sign"></i>
+
+                                  <span class="extra-info">
+                                    A little column extra info. Aaand just a little bit more
+                                  </span>
+                                </div>
+                            </div>                            
+                        </div>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Increase or Decrease</label>
-                        {{ form.s_County_GDP_Percent(class="form-control form-control-lg") }}
-                    </div>
-                    <div class="form-group col-md-4 mb-3">
-                        {{ form.County_GDP_Percent.label(class="form-control-label") }}
-                        {% if form.County_GDP_Percent.errors %}
-                            {{ form.County_GDP_Percent(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.County_GDP_Percent.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.County_GDP_Percent(class="form-control form-control-lg") }}
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Increase or Decrease</label>
-                        {{ form.s_PC_Labor_Force(class="form-control form-control-lg") }}
-                    </div>
-                    <div class="form-group col-md-4 mb-3">
-                        {{ form.PC_Labor_Force.label(class="form-control-label") }}
-                        {% if form.PC_Labor_Force.errors %}
-                            {{ form.PC_Labor_Force(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.PC_Labor_Force.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.PC_Labor_Force(class="form-control form-control-lg") }}
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Increase or Decrease</label>
-                        {{ form.s_PC_Unemployed(class="form-control form-control-lg") }}
-                    </div>
-                    <div class="form-group col-md-4 mb-3">
-                        {{ form.PC_Unemployed.label(class="form-control-label") }}
-                        {% if form.PC_Unemployed.errors %}
-                            {{ form.PC_Unemployed(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.PC_Unemployed.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.PC_Unemployed(class="form-control form-control-lg") }}
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Increase or Decrease</label>
-                        {{ form.s_GR_Total_Population(class="form-control form-control-lg") }}
-                        
-                    </div>
-                    <div class="form-group col-md-4 mb-3">
-                        {{ form.GR_Total_Population.label(class="form-control-label") }}
-                        {% if form.GR_Total_Population.errors %}
-                            {{ form.GR_Total_Population(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.GR_Total_Population.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.GR_Total_Population(class="form-control form-control-lg") }}
-                        {% endif %}
-                    </div>
-                </div>
-                
-               
+
+
+
              </fieldset>
             <div class="form-group">
                 {{ form.Predict(class="btn btn-outline-info") }}
