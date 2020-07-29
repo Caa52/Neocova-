@@ -1,4 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>{{ current_user.username }}</h1>
+	{% for item in values %}
+		<p>id: {{item.id}}, username: {{item.username}}, email: {{item.email}},city: {{item.City}}, state: {{item.State}}, Zip: {{item.Zip}}, company: {{item.Company}}, department: {{item.Department}}, title: {{item.Title}} </p>
+	{% endfor %}
 {% endblock content %}

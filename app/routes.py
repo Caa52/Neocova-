@@ -8,6 +8,10 @@ import numpy as np
 from datetime import datetime
 import json
 import requests 
+import plotly
+import pandas as pd
+import scipy.stats as stats
+import math
 
 posts = [
     {
@@ -76,7 +80,7 @@ def logout():
 @app.route("/account")
 @login_required
 def account():
-    return render_template('account.html', title='Account')
+    return render_template('account.html', title='Account',values=User.query.filter_by(username=current_user.username))
 
 
 # @app.route('/predict', methods=['GET', 'POST'])
@@ -120,6 +124,7 @@ def predict():
             if s_final_features[i] == '2':
                 final_features[i] = final_features[i]*(-1)
 
+        final_features = final_features/100
         final_features = [final_features.tolist()]
         
         scoring_uri = 'http://5e56fe7c-6b6f-47ff-bdfb-fac9b4b8c334.westus2.azurecontainer.io/score'
@@ -131,7 +136,7 @@ def predict():
         
         output  = json.loads(resp.text)
         # output  = resp.text
-        output = round(output[0][0]*100,3);
+        output = round(output[0][0]*100,1);
 
         history = History(roeinjr = final_features[0][0],
             noijy = final_features[0][1],
@@ -153,13 +158,55 @@ def predict():
         db.session.add(found_user)
         db.session.add(history)
         db.session.commit()
-        return render_template('predict_form.html', title='Login', form=form, prediction_text='Your bank evaluation is estimated to have {} % change'.format(output))
 
+        mu = output;
+        # variance = 0.023
+        sigma = 0.023
+        x = np.linspace(mu - 3*sigma, mu + 3*sigma, 100)
+        y =stats.norm.pdf(x, mu, sigma);
+
+
+        rng = pd.date_range('1/1/2011', periods=7500, freq='H')
+        ts = pd.Series(np.random.randn(len(rng)), index=rng)
+
+        graphs = [
+            dict(
+                data=[
+                    dict(
+                        x=x,
+                        y=y,
+                        type='scatter'
+                    ),
+                ],
+                layout=dict(
+                    title='',
+                    xaxis=dict(title='Bank valuation'),
+                    yaxis=dict(title='Probability')
+                )
+            )
+        ]
+
+    # Add "ids" to each of the graphs to pass up to the client
+    # for templating
+        ids = ['Visualization']
+
+    # Convert the figures to JSON
+    # PlotlyJSONEncoder appropriately converts pandas, datetime, etc
+    # objects to their JSON equivalents
+        graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
+
+
+        return render_template('predict_form.html', title='Login', form=form, prediction_text='Your bank valuation is estimated to have {} % change'.format(output),ids=ids, graphJSON=graphJSON)
+        # return render_template('plot.html',ids=ids,graphJSON=graphJSON)
     return render_template('predict_form.html',title='Login', form=form)
 
 @app.route("/view")
 def view():
     return render_template("view.html", values=History.query.all())
+
+@app.route("/view2")
+def view2():
+    return render_template("view2.html", values=User.query.filter_by(username=current_user.username))
 
 @app.route("/viewaccount")
 def viewaccount():
