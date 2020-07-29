@@ -138,16 +138,16 @@ def predict():
         # output  = resp.text
         output = round(output[0][0]*100,1);
 
-        history = History(roeinjr = final_features[0][0],
-            noijy = final_features[0][1],
-            asset = final_features[0][2],
-            RBCT1J= final_features[0][3],
-            core_deposit= final_features[0][4],
-            lnlsntv= final_features[0][5],
-            County_GDP_Percent= final_features[0][6],
-            PC_Labor_Force= final_features[0][7],
-            PC_Unemployed = final_features[0][8],
-            GR_Total_Population = final_features[0][9],
+        history = History(roeinjr = final_features[0][0]*100,
+            noijy = final_features[0][1]*100,
+            asset = final_features[0][2]*100,
+            RBCT1J= final_features[0][3]*100,
+            core_deposit= final_features[0][4]*100,
+            lnlsntv= final_features[0][5]*100,
+            County_GDP_Percent= final_features[0][6]*100,
+            PC_Labor_Force= final_features[0][7]*100,
+            PC_Unemployed = final_features[0][8]*100,
+            GR_Total_Population = final_features[0][9]*100,
 
             output = output,
             time = datetime.now())
@@ -206,7 +206,7 @@ def view():
 
 @app.route("/view2")
 def view2():
-    return render_template("view2.html", values=User.query.filter_by(username=current_user.username))
+    return render_template("view2.html", values=History.query.filter_by(user_id=current_user.id).all())
 
 @app.route("/viewaccount")
 def viewaccount():

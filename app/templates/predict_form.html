@@ -10,8 +10,9 @@
         <form action="{{ url_for('predict')}}"method="post">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Bank Valuation Forecasting</legend>
-
+                <legend class="border-bottom mb-2">Bank Valuation Forecasting</legend>
+                <h5 class="border-bottom mb-4">*Quick Guide: The input should be the percentage increase or decrease of the variable. The output would be the percentage increase or decrease of bank valuation.</h5>
+                <br>
                 <div class="form-row">
                     <div class="col">
                         <div class="form-row">
